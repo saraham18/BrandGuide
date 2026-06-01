@@ -17,7 +17,8 @@ dependencies = ["requests>=2.31", "beautifulsoup4>=4.12"]
 # Claude synthesis + logo palette sampling. Core scraping works without these.
 ai = ["anthropic>=0.40"]
 image = ["Pillow>=10.0"]
-all = ["anthropic>=0.40", "Pillow>=10.0"]
+render = ["playwright>=1.40"]
+all = ["anthropic>=0.40", "Pillow>=10.0", "playwright>=1.40"]
 dev = ["pytest>=7.0"]
 
 [project.scripts]

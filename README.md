@@ -64,7 +64,17 @@ brandforge generate --url https://stripe.com
 # -> projects/stripe-com/brand-guide.json + .html + logo.svg
 
 brandforge generate --url example.com --name my-project --out projects
+
+# JS-heavy or client-rendered site? Render it with headless Chromium first so
+# lazy-loaded product grids and feeds are captured (needs the render extra):
+#   pip install -e ".[all]" && playwright install chromium
+brandforge generate --url https://example.com --render
 ```
+
+By default the scraper reads server-rendered HTML, which is fast and covers most
+sites. `--render` loads the page in headless Chromium, lets it hydrate, and
+scrolls to trigger lazy-loaded images before scraping - use it when a site
+returns few product or lifestyle photos without it.
 
 ### Example (real output from `stripe.com`)
 

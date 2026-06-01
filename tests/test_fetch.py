@@ -27,6 +27,22 @@ def _fake_session(html):
     return types.SimpleNamespace(get=get)
 
 
+def test_fetch_render_path_uses_playwright(monkeypatch):
+    """render=True pulls HTML from the renderer, then parses it normally."""
+    import brandforge.scrape as scrape_mod
+    calls = {}
+
+    def fake_render(url, **kw):
+        calls["url"] = url
+        return PAGE, "https://acme.com/rendered"
+
+    monkeypatch.setattr(scrape_mod, "render_html_playwright", fake_render)
+    r = fetch("https://acme.com", session=_fake_session(PAGE), render=True)
+    assert calls["url"] == "https://acme.com"
+    assert r.final_url == "https://acme.com/rendered"
+    assert any("widget.jpg" in u for u in r.product_images)
+
+
 def test_fetch_parses_brand_signals():
     r = fetch("https://acme.com", session=_fake_session(PAGE))
     assert r.title == "Acme - Bold Things"

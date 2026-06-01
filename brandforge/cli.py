@@ -23,8 +23,9 @@ def _slug(domain: str, fallback: str = "brand") -> str:
 def cmd_generate(args, config: Config) -> int:
     config.require_llm()
 
-    print(f"-> Scraping {args.url} ...")
-    scrape = fetch(args.url)
+    render = getattr(args, "render", False)
+    print(f"-> Scraping {args.url} {'(rendering JS)' if render else ''}...")
+    scrape = fetch(args.url, render=render)
     print(f"  title: {scrape.title or '(none)'}")
     print(f"  colors: {', '.join(scrape.colors) or '(none)'}")
     print(f"  fonts: {', '.join(scrape.fonts) or '(none)'}")
@@ -88,6 +89,10 @@ def build_parser() -> argparse.ArgumentParser:
     g.add_argument("--url", required=True, help="Website URL to analyze")
     g.add_argument("--name", help="Project slug (default: derived from domain)")
     g.add_argument("--out", default="projects", help="Output root (default: projects/)")
+    g.add_argument(
+        "--render", action="store_true",
+        help="Render JS with headless Chromium first (needs the 'render' extra)",
+    )
     g.set_defaults(func=cmd_generate)
     return parser
 

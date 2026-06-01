@@ -187,8 +187,45 @@ def _social_links(soup) -> dict:
     return links
 
 
-def fetch(url: str, *, timeout: int = 15, session: object | None = None) -> ScrapeResult:
-    """Fetch and parse a page into a ScrapeResult."""
+def render_html_playwright(url: str, *, timeout_ms: int = 30000, scrolls: int = 4) -> tuple:
+    """Render a JS-heavy page with headless Chromium and return (html, final_url).
+
+    Scrolls a few times so lazy-loaded product grids and feeds populate. Requires
+    the optional 'playwright' extra plus a browser: `playwright install chromium`.
+    """
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError as exc:  # pragma: no cover
+        raise RuntimeError(
+            "Rendering needs Playwright. Install: pip install playwright "
+            "&& playwright install chromium"
+        ) from exc
+    with sync_playwright() as pw:  # pragma: no cover - exercised with a real browser
+        browser = pw.chromium.launch(headless=True)
+        try:
+            page = browser.new_page(
+                user_agent=USER_AGENT, viewport={"width": 1366, "height": 900}
+            )
+            # 'domcontentloaded' is far more reliable than 'networkidle', which
+            # hangs on sites with persistent connections (analytics, long-poll).
+            page.goto(url, wait_until="domcontentloaded", timeout=timeout_ms)
+            page.wait_for_timeout(1500)  # let initial JS hydrate
+            for _ in range(scrolls):  # trigger lazy-loaded galleries / feeds
+                page.mouse.wheel(0, 2200)
+                page.wait_for_timeout(700)
+            return page.content(), page.url
+        finally:
+            browser.close()
+
+
+def fetch(
+    url: str, *, timeout: int = 15, session: object | None = None, render: bool = False
+) -> ScrapeResult:
+    """Fetch and parse a page into a ScrapeResult.
+
+    With render=True, the page is loaded in headless Chromium first so
+    JavaScript-rendered content (lazy galleries, SPAs) is captured.
+    """
     if not url.startswith(("http://", "https://")):
         url = "https://" + url
     try:
@@ -201,9 +238,12 @@ def fetch(url: str, *, timeout: int = 15, session: object | None = None) -> Scra
         ) from exc
 
     http = session or requests
-    resp = http.get(url, headers={"User-Agent": USER_AGENT}, timeout=timeout)
-    html = resp.text
-    final_url = str(getattr(resp, "url", url))
+    if render:
+        html, final_url = render_html_playwright(url, timeout_ms=timeout * 2000)
+    else:
+        resp = http.get(url, headers={"User-Agent": USER_AGENT}, timeout=timeout)
+        html = resp.text
+        final_url = str(getattr(resp, "url", url))
     soup = BeautifulSoup(html, "html.parser")
 
     result = ScrapeResult(url=url, final_url=final_url)
