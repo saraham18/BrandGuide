@@ -10,7 +10,7 @@ It is the upstream "step 1" of a marketing stack: the `brand-guide.json` it
 produces feeds downstream tools (ad-creative generators, post writers, the
 [HookForge](https://github.com/saraham18/HookForge) hook simulator).
 
-![BrandGuide example output for Death Wish Coffee](docs/example-deathwish.png)
+![BrandGuide example output for SKIMS](docs/example-skims.png)
 
 ---
 

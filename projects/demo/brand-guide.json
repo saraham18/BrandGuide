@@ -1,91 +1,89 @@
 {
-  "brand_name": "Death Wish Coffee",
-  "tagline": "The Society of Strong Coffee",
-  "mission": "To deliver the boldest, smoothest, highest-caffeine coffee on earth using USDA Organic and Fair Trade Certified beans, sourced sustainably and roasted to uncompromising standards for people who refuse to settle for ordinary.",
-  "summary": "Death Wish Coffee is a dark, mythology-charged coffee brand built for high-performers, rebels, and caffeine maximalists. Founded in 2012, it blends premium arabica and robusta beans from India, Peru, and Central and South America into a product that is simultaneously intense and smooth. The brand extends into lifestyle merchandise, limited-edition collectibles, and a subscriber community that rewards loyalty with exclusive access. Every touchpoint - from product names like Power Surge and Gates of Valhalla to copy like 'harness your inner storm' - signals that this is coffee as identity, not just caffeine.",
-  "target_audience": "Adults 22-45 who identify as hard workers, night owls, gym-goers, gamers, outdoor adventurers, or counterculture enthusiasts. They distrust corporate polish, respect craft and intensity, and want a brand that matches their energy. They respond to mythology, dark aesthetics, and community belonging.",
+  "brand_name": "SKIMS",
+  "tagline": "Solutions For Every Body",
+  "mission": "To create the next generation of underwear, clothing, and shapewear that solves real fit and comfort problems for every body type.",
+  "summary": "SKIMS is a solutions-oriented intimates and loungewear brand founded by Kim Kardashian. It leads with inclusive sizing, body-conscious construction, and a neutral-to-cool aesthetic that feels modern and aspirational without being exclusionary. The brand spans shapewear, underwear, bras, swim, and collaborative collections like NikeSKIMS.",
+  "target_audience": "Women ages 18-45 across all body types and sizes who want underwear, shapewear, and loungewear that actually fits, smooths, and supports without sacrificing style or comfort.",
   "personas": [
     {
-      "name": "The Relentless Grinder",
-      "description": "A 28-35 year old who stacks early mornings and late nights without apology - trades, construction, freelance hustle, or gym before sunrise. Coffee is fuel and ritual, and anything less than maximum strength is a waste of time."
+      "name": "The Confident Curator",
+      "description": "A woman in her late 20s to mid-30s who builds outfits intentionally and treats her foundational pieces as seriously as her outerwear. She shops for quality and fit first, and she is not afraid to invest in basics that make everything else look better."
     },
     {
-      "name": "The Dark Aesthetic Collector",
-      "description": "A 24-38 year old who gravitates toward Norse mythology, occult imagery, and limited-edition drops. They buy the Baba Yaga mug because it belongs on their shelf and in their story, not just in their kitchen."
+      "name": "The Comfort Seeker",
+      "description": "A busy woman in her 30s or 40s who has given up on uncomfortable shapewear and wants solutions that move with her body through long days. She values softness, stretch, and a smooth silhouette without the squeeze."
     },
     {
-      "name": "The Loyal Subscriber",
-      "description": "A 30-45 year old who found Death Wish years ago and never looked back. They evangelize the brand to friends, leave detailed reviews, and feel genuine pride in being part of a coffee society that others have not discovered yet."
+      "name": "The Body-Positive Explorer",
+      "description": "A woman in her early 20s who is actively building a wardrobe that celebrates her shape rather than hiding it. She follows inclusive brands closely and shares her finds with an engaged online community."
     },
     {
-      "name": "The High-Caffeine Convert",
-      "description": "A 22-32 year old who was drinking mediocre coffee until one bag of Death Wish rewired their expectations entirely. They are early in their brand relationship but already evangelical, driven by the shock of discovering something genuinely different."
+      "name": "The Elevated Minimalist",
+      "description": "A style-conscious woman who gravitates toward neutral tones and clean lines and sees SKIMS as the brand that finally made basics feel luxurious. She layers SKIMS pieces into everyday outfits and expects them to perform as well as they photograph."
     }
   ],
   "selling_points": [
-    "World's strongest coffee with naturally high caffeine from a robusta and arabica blend",
-    "USDA Organic and Fair Trade Certified on every roast",
-    "Bold flavor with no overwhelming bitterness - smooth finish confirmed by repeat buyers",
-    "Subscribe and save 30% off the first shipment plus access to exclusive society merch",
-    "Build-your-own bundle saves up to 15% off",
-    "15% discount for military, first responders, and teachers via GovX ID",
-    "Limited-edition drops tied to mythology and dark folklore themes create urgency and collectibility",
-    "Available in whole bean, ground, and single-serve pods for all brew methods",
-    "Consistent quality and taste across every bag - no batch-to-batch surprises",
-    "Lifestyle merchandise line extends the brand into daily identity expression"
+    "Inclusive sizing across a wide range of body types and skin tones",
+    "Shapewear engineered for comfort with targeted compression levels",
+    "Seamless and smooth construction that disappears under clothing",
+    "Soft, stretch-forward fabrics designed for all-day wear",
+    "Bra solutions including the newly launched Ultimate T-Shirt Bra",
+    "Swim collection that combines support with sleek aesthetics",
+    "High-profile collaborations such as NikeSKIMS Studio",
+    "Free domestic shipping on orders over $75",
+    "Curated style guides to help customers find the right silhouette and lining"
   ],
   "emotional_motivations": [
-    "Desire to feel powerful and in control during high-pressure moments",
-    "Pride in belonging to a community of people who demand more than average",
-    "The thrill of discovering something extreme that actually delivers on its promise",
-    "Identity expression through dark, mythological, counterculture aesthetics",
-    "Loyalty to a brand that respects its customers with real discounts and exclusive access",
-    "The ritual comfort of a consistent, trusted product that never disappoints"
+    "Feeling confident and put-together in every outfit without visible lines or discomfort",
+    "The relief of finally finding basics that fit a real body perfectly",
+    "Pride in wearing a brand that sees and celebrates all body types",
+    "The desire to feel effortlessly polished and in control of how you look",
+    "Belonging to a culturally relevant brand that is talked about and admired"
   ],
-  "primary_color": "#e12727",
-  "secondary_color": "#ac6e39",
-  "accent_color": "#ecd798",
+  "primary_color": "#272d45",
+  "secondary_color": "#9a9db1",
+  "accent_color": "#00caaa",
   "color_palette": [
-    "#fb8077",
-    "#079ada",
-    "#9ca3af",
-    "#181313",
-    "#5c5a5a",
-    "#501919",
-    "#9e9e9e",
-    "#867474"
+    "#676986",
+    "#2c3e50",
+    "#0e7a82",
+    "#b79a85",
+    "#e8dfd9",
+    "#c5ae9d",
+    "#cab5a6",
+    "#bda28e"
   ],
-  "font_heading": "DM Sans",
-  "font_body": "DM Sans",
-  "voice_tone": "Dark, bold, and mythic with a streak of earned confidence",
-  "voice_notes": "Write like someone who has been through something and come out stronger. Use short, punchy declarative sentences alongside occasional epic, world-building phrases. Reference storms, endurance, power, and folklore without being campy. Never use corporate softness or hedging language. Avoid words like 'journey,' 'solution,' or 'innovative.' Superlatives are earned here - use them when the product backs them up. Reviews and community voices should feel raw and real, not polished. Discount and offer copy should feel like a reward, not a sale.",
-  "casting_notes": "Cast real-looking humans aged 24-42 with visible personality and physical presence - calloused hands, tattoos, worn flannel, gym chalk, or dark streetwear all work. Avoid model-perfect faces and sterile environments. Settings should feel lived-in: dim kitchens at 5am, cluttered workshops, foggy morning trails, moody apartments with bookshelves. Energy should be calm intensity rather than hyperactive. Women and men equally, with strong representation of military, trades, and athletic lifestyles. Avoid anyone who looks like they belong in a generic lifestyle stock photo.",
-  "rules": "DO use dark backgrounds, deep reds, and warm amber tones to anchor visuals. DO lean into mythology, folklore, and elemental metaphors. DO let customer voices be raw and unpolished in testimonial creative. DO create urgency around limited-edition drops with specific product names. DO reward the audience - they hate being talked down to. DO NOT use bright, airy, or pastel aesthetics that conflict with the brand's dark identity. DO NOT use generic coffee tropes like steam rising over a sunrise or a smiling barista. DO NOT soften the intensity of the product - the strength is the point. DO NOT use emoji or exclamation-point-heavy copy that reads as hype without substance. DO NOT misrepresent certifications - always pair organic and fair trade claims with factual grounding. DO NOT ignore the merchandise line - it is a core part of the brand identity, not an afterthought.",
+  "font_heading": "var(--oke-text-fontFamily)",
+  "font_body": "var(--oke-button-fontFamily)",
+  "voice_tone": "Confident, inclusive, and quietly aspirational",
+  "voice_notes": "Write in clean, direct sentences that feel empowering without being loud. Lead with the solution the product provides, not just the feature. Avoid clinical or overly technical language. Use body-positive framing that is matter-of-fact rather than preachy. Headlines should be short and declarative. Copy should feel like it was written by someone who genuinely wears and believes in the product.",
+  "casting_notes": "Cast women ages 18-50 across a full spectrum of body types, skin tones, and sizes - no single body type should dominate. Energy should be calm, self-assured, and natural rather than performative or high-energy. Settings should feel real and lived-in: a bright bedroom, a clean bathroom mirror, a modern kitchen, a studio with soft natural light. Avoid overly styled or editorial looks that feel unattainable. UGC talent should feel like a real customer who discovered something that works, not a model selling a product.",
+  "rules": "DO: Show the product on diverse real bodies in motion and at rest. DO: Highlight fit, smoothness, and comfort as the core visual story. DO: Use the brand's cool neutral palette as the backdrop for all creative. DO: Let the product speak through honest before-and-after or wear-it-your-way framing. DO: Reference specific product features like compression level, seamless construction, or silhouette when relevant. DON'T: Use overly retouched or homogenous body types that contradict the inclusive brand promise. DON'T: Use loud or aggressive sales language - SKIMS does not shout. DON'T: Introduce colors or fonts outside the brand palette in creative assets. DON'T: Portray shapewear as something to hide or be ashamed of - frame it as a tool of confidence. DON'T: Overcrowd copy; white space and restraint are core to the brand aesthetic.",
   "_detected": {
     "colors": [
-      "#ac6e39",
-      "#9ca3af",
-      "#fb8077",
-      "#e12727",
-      "#ecd798",
-      "#079ada"
+      "#676986",
+      "#272d45",
+      "#2c3e50",
+      "#0e7a82",
+      "#9a9db1",
+      "#00caaa"
     ],
     "logo_colors": [
-      "#181313",
-      "#5c5a5a",
-      "#501919",
-      "#9e9e9e",
-      "#867474"
+      "#b79a85",
+      "#e8dfd9",
+      "#c5ae9d",
+      "#cab5a6",
+      "#bda28e"
     ],
     "fonts": [
-      "DM Sans",
-      "var(--font-body-family)",
-      "ui-sans-serif",
-      "ui-monospace"
+      "var(--oke-text-fontFamily)",
+      "oke-widget-icons!important",
+      "oke-widget-icons",
+      "var(--oke-button-fontFamily)"
     ],
-    "source_url": "https://www.deathwishcoffee.com/"
+    "source_url": "https://skims.com/"
   },
-  "logo_path": "logo.png",
+  "logo_path": "logo.ico",
   "assets": [
     {
       "kind": "product_photo",
@@ -119,9 +117,10 @@
     }
   ],
   "social_links": {
-    "x": "https://twitter.com/deathwishcoffee",
-    "facebook": "https://www.facebook.com/deathwishcoffee",
-    "instagram": "https://www.instagram.com/deathwishcoffee/",
-    "youtube": "https://www.youtube.com/channel/UC1uurJMded2rRJioe8yka7g"
+    "instagram": "https://www.instagram.com/skims",
+    "facebook": "https://www.facebook.com/skimsbody",
+    "youtube": "https://www.youtube.com/c/skims",
+    "x": "https://x.com/skims",
+    "tiktok": "https://www.tiktok.com/@skims"
   }
 }
