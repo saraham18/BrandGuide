@@ -1,0 +1,97 @@
+# BrandForge
+
+**Generate a complete brand guide from any website URL.** Point it at a site and
+it scrapes the real logo, colors, fonts, and copy, then has Claude synthesize a
+structured brand guide - voice, audience, personas, selling points, color system,
+typography, casting notes, and rules. Outputs **JSON + HTML**. Bring your own key.
+
+It's the upstream "step 1" of a marketing stack: the `brand-guide.json` it
+produces feeds downstream tools (ad-creative generators, post writers, the
+[HookForge](https://github.com/saraham18/HookForge) hook simulator).
+
+---
+
+## What it produces
+
+The output is a structured brand-memory schema, so guides are portable and easy
+to feed into downstream tools (ad-creative generators, post writers, schedulers):
+
+| Group | Fields |
+|---|---|
+| **Mission** | `brand_name`, `tagline`, `mission`, `summary` |
+| **Audience** | `target_audience`, `personas[{name, description}]` |
+| **Messaging** | `selling_points[]`, `emotional_motivations[]` |
+| **Visual** | `logo_path`, `primary_color`, `secondary_color`, `accent_color`, `color_palette[]`, `font_heading`, `font_body` |
+| **Style** | `voice_tone`, `voice_notes`, `casting_notes`, `rules` |
+
+Each run writes a per-project folder:
+
+```
+projects/<site>/
+brand-guide.json   # structured data (the source of truth)
+brand-guide.html   # polished, self-contained guide you can open/share
+logo.<ext>         # the site's real logo, downloaded
+```
+
+## How it works
+
+1. **Scrape** (`scrape.py`) - fetch the page, pull title/description/copy, rank
+   **logo candidates** (icons, `og:image`, `<img>`/`<svg>` tagged "logo"), and
+   extract **colors** (from CSS, greys de-prioritized) and **fonts**.
+2. **Extract** (`extract.py`) - download the real logo; sample its dominant
+   palette with Pillow (transparent logos composited on white first).
+3. **Synthesize** (`brandguide.py`) - Claude infers the full guide from the
+   signals, choosing primary/secondary/accent **from the detected colors** so the
+   palette is real, not guessed.
+4. **Render** (`render.py`) - emit a clean HTML brand guide.
+
+Every network and LLM call is **injectable**, so the whole pipeline is unit-tested
+offline with fakes - no key, no network (`pytest -q` -> 10 passing).
+
+## Install
+
+```bash
+git clone https://github.com/saraham18/BrandForge.git
+cd BrandForge
+pip install -e ".[all]"      # scraping works with just the base deps
+cp .env.example .env         # add your ANTHROPIC_API_KEY
+```
+
+## Use
+
+```bash
+brandforge generate --url https://stripe.com
+# -> projects/stripe-com/brand-guide.json + .html + logo.svg
+
+brandforge generate --url example.com --name my-project --out projects
+```
+
+### Example (real output from `stripe.com`)
+
+```json
+{
+  "brand_name": "Stripe",
+  "tagline": "Financial infrastructure to grow your revenue.",
+  "voice_tone": "Precise, confident, and quietly ambitious.",
+  "primary_color": "#533afd",
+  "font_heading": "sohne-var",
+  "personas": [{ "name": "The Ambitious Founder", "description": "..." }],
+  "selling_points": ["135+ currencies and payment methods supported globally", "..."],
+  "casting_notes": "Cast real-looking founders, engineers, and operators aged 25-45 ..."
+}
+```
+
+## Configuration
+
+Bring-your-own-key via `.env` (gitignored). See [`.env.example`](.env.example):
+- `ANTHROPIC_API_KEY` - required
+- `BRANDFORGE_MODEL` - optional model override (default `claude-sonnet-4-6`)
+
+## Contributing
+
+Issues and PRs welcome. Good first additions: a Playwright fetcher for
+JS-rendered sites, more logo heuristics, or extra output formats.
+
+## License
+
+MIT © 2026 Sarah McLellan

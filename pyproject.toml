@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "brandforge"
+version = "0.1.0"
+description = "Generate a complete brand guide (voice, audience, colors, typography, logo) from any website URL. Outputs JSON + HTML. Bring your own Claude key."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Sarah McLellan" }]
+keywords = ["branding", "brand-guide", "ai", "marketing", "claude", "scraper"]
+dependencies = ["requests>=2.31", "beautifulsoup4>=4.12"]
+
+[project.optional-dependencies]
+# Claude synthesis + logo palette sampling. Core scraping works without these.
+ai = ["anthropic>=0.40"]
+image = ["Pillow>=10.0"]
+all = ["anthropic>=0.40", "Pillow>=10.0"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+brandforge = "brandforge.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["brandforge*"]

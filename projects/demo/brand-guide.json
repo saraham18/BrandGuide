@@ -1,0 +1,78 @@
+{
+  "brand_name": "Stripe",
+  "tagline": "Financial infrastructure to grow your revenue.",
+  "mission": "To increase the GDP of the internet by building the most powerful and flexible financial infrastructure for businesses of every size, from first transaction to billionth.",
+  "summary": "Stripe is the backbone of global commerce \u2014 a developer-first, enterprise-grade payments and financial platform that lets businesses accept payments, build billing models, issue cards, move money globally, and embed financial services into any product. It combines technical depth with elegant simplicity, trusted by startups and 50% of Fortune 100 companies alike.",
+  "target_audience": "Founders, CTOs, product managers, and finance leaders at high-growth startups, scaling SaaS companies, marketplaces, and enterprise organizations who need reliable, programmable financial infrastructure without operational friction.",
+  "personas": [
+    {
+      "name": "The Ambitious Founder",
+      "description": "A 28-35 year old tech entrepreneur launching or scaling a SaaS or marketplace product, obsessed with shipping fast and not getting bogged down by payment complexity. They want infrastructure that just works so they can focus on growth."
+    },
+    {
+      "name": "The Enterprise Architect",
+      "description": "A senior engineering or product leader at a Fortune 500 company, mid-40s, tasked with modernizing legacy payment systems. They need proven reliability, global scale, and a platform that integrates cleanly into complex existing stacks."
+    },
+    {
+      "name": "The Global Commerce Operator",
+      "description": "A 30-40 year old head of payments or revenue operations at a fast-scaling e-commerce or platform business, managing multi-currency transactions and international expansion. They care about conversion rates, uptime, and borderless money movement."
+    },
+    {
+      "name": "The Developer Builder",
+      "description": "A 22-32 year old full-stack engineer who is the internal champion for Stripe adoption, energized by clean APIs and excellent documentation. They evaluate tools by how quickly they can ship a proof of concept and how far the platform can scale."
+    }
+  ],
+  "selling_points": [
+    "135+ currencies and payment methods supported globally",
+    "$1.9 trillion in payments volume processed in 2025",
+    "99.999% historical uptime \u2014 enterprise-grade reliability",
+    "200M+ active subscriptions managed on Stripe Billing",
+    "Flexible billing models: subscriptions, usage-based, one-time, and custom",
+    "Embedded payments for platforms and marketplaces",
+    "Card issuing program creation built into the platform",
+    "Stablecoin and crypto-enabled borderless money movement",
+    "Agentic commerce monetization for AI-driven business models",
+    "Trusted by 50% of Fortune 100 companies",
+    "Unified online and in-person payment infrastructure",
+    "Personalized product recommendations based on business type"
+  ],
+  "emotional_motivations": [
+    "Confidence that payments will never be the reason growth stalls",
+    "Pride in building on infrastructure trusted by the world's best companies",
+    "Relief from the complexity and anxiety of managing global money movement",
+    "Ambition to scale without limits \u2014 from first transaction to billionth",
+    "Control over revenue models without engineering constraints",
+    "Trust in a platform with proven, measurable reliability"
+  ],
+  "primary_color": "#533afd",
+  "secondary_color": "#1a1a2e",
+  "accent_color": "#f5a623",
+  "color_palette": [
+    "#fb76fa",
+    "#7ec8e3",
+    "#2d2d44"
+  ],
+  "font_heading": "sohne-var",
+  "font_body": "SourceCodePro",
+  "voice_tone": "Precise, confident, and quietly ambitious.",
+  "voice_notes": "Write with technical authority but never jargon for jargon's sake. Lead with scale and capability, then ground it in concrete numbers and real outcomes. Sentences should be tight and declarative \u2014 no fluff, no hype. Use active voice. Speak to builders and decision-makers as peers. Avoid superlatives unless backed by data. The tone is calm confidence: Stripe doesn't need to shout because the numbers speak. When writing CTAs, be direct and action-oriented ('Start building', 'See the docs', 'Talk to sales').",
+  "casting_notes": "Cast real-looking founders, engineers, and operators aged 25-45 \u2014 diverse in background, sharp in energy, working in real environments: modern open offices, home setups with multiple monitors, co-working spaces, or retail floors. Avoid overly polished or stock-photo aesthetics. Subjects should look like they're actually building something, not posing. Wardrobe: smart-casual, functional. Energy: focused, purposeful, quietly excited \u2014 not loud or salesy. For enterprise spots, include team settings and boardroom-adjacent contexts that signal scale without feeling stiff.",
+  "rules": "DO: Use real metrics and proof points in copy whenever possible. DO: Reflect the full spectrum of business sizes \u2014 from solo founders to Fortune 100. DO: Pair technical capability with business outcome language. DO: Use the deep indigo (#533afd) as the dominant brand signal in visuals. DO: Show the product (dashboard, API, checkout) in context \u2014 not as abstract UI. DO: Maintain visual cleanliness \u2014 generous whitespace, structured layouts. DON'T: Use generic 'payments made easy' language \u2014 Stripe is infrastructure, not a widget. DON'T: Overpromise or use unsubstantiated superlatives. DON'T: Show chaotic, cluttered, or low-fidelity creative \u2014 quality signals trust. DON'T: Use humor that undermines credibility \u2014 wit is fine, slapstick is not. DON'T: Ignore developer and technical audiences in favor of pure business messaging. DON'T: Use competitor names or comparative claims. DON'T: Depict payment failure, fraud, or downtime scenarios \u2014 reinforce reliability always.",
+  "_detected": {
+    "colors": [
+      "#533afd",
+      "#f5a623",
+      "#fb76fa",
+      "#1a1a2e",
+      "#7ec8e3",
+      "#2d2d44"
+    ],
+    "logo_colors": [],
+    "fonts": [
+      "sohne-var",
+      "SourceCodePro"
+    ],
+    "source_url": "https://stripe.com/"
+  },
+  "logo_path": "logo.svg"
+}

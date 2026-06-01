@@ -1,0 +1,22 @@
+# Secrets
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.venv/
+venv/
+
+# Generated brand guides (each run writes here; keep the demo, ignore the rest)
+projects/*
+!projects/.gitkeep
+!projects/demo/
+
+# OS
+.DS_Store
