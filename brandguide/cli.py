@@ -1,4 +1,4 @@
-"""BrandForge CLI: turn a website URL into a brand guide (JSON + HTML)."""
+"""BrandGuide CLI: turn a website URL into a brand guide (JSON + HTML)."""
 from __future__ import annotations
 
 import argparse
@@ -81,7 +81,7 @@ def cmd_generate(args, config: Config) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="brandforge", description="BrandForge")
+    parser = argparse.ArgumentParser(prog="brandguide", description="BrandGuide")
     parser.add_argument("--env", default=".env", help="Path to .env (default: .env)")
     sub = parser.add_subparsers(dest="command", required=True)
 

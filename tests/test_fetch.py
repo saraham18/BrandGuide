@@ -1,7 +1,7 @@
 """Exercise the HTML parsing path of fetch() with a fake HTTP session (no network)."""
 import types
 
-from brandforge.scrape import fetch
+from brandguide.scrape import fetch
 
 PAGE = """<!doctype html><html><head>
 <title>Acme - Bold Things</title>
@@ -29,7 +29,7 @@ def _fake_session(html):
 
 def test_fetch_render_path_uses_playwright(monkeypatch):
     """render=True pulls HTML from the renderer, then parses it normally."""
-    import brandforge.scrape as scrape_mod
+    import brandguide.scrape as scrape_mod
     calls = {}
 
     def fake_render(url, **kw):

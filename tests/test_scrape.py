@@ -1,4 +1,4 @@
-from brandforge.scrape import (
+from brandguide.scrape import (
     extract_colors,
     extract_fonts,
     rank_logo_candidates,

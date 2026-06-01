@@ -32,7 +32,7 @@ class Config:
     def __init__(self, env: dict | None = None):
         env = env if env is not None else os.environ
         self.anthropic_api_key = env.get("ANTHROPIC_API_KEY")
-        self.model = env.get("BRANDFORGE_MODEL", DEFAULT_MODEL)
+        self.model = env.get("BRANDGUIDE_MODEL", DEFAULT_MODEL)
 
     def require_llm(self) -> None:
         if not self.anthropic_api_key:

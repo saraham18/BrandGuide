@@ -1,10 +1,10 @@
 import json
 import types
 
-from brandforge.config import Config
-from brandforge.scrape import ScrapeResult
-from brandforge.brandguide import synthesize, sanitize, _merge_detected, build_prompt
-from brandforge.render import render_html
+from brandguide.config import Config
+from brandguide.scrape import ScrapeResult
+from brandguide.brandguide import synthesize, sanitize, _merge_detected, build_prompt
+from brandguide.render import render_html
 
 
 def test_sanitize_strips_emojis_and_em_dashes():

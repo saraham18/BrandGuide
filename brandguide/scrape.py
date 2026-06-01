@@ -13,7 +13,7 @@ from urllib.parse import urljoin, urlparse
 
 USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) BrandForge/0.1 Safari/537.36"
+    "(KHTML, like Gecko) BrandGuide/0.1 Safari/537.36"
 )
 
 HEX_RE = re.compile(r"#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})\b")
@@ -233,7 +233,7 @@ def fetch(
         from bs4 import BeautifulSoup
     except ImportError as exc:  # pragma: no cover
         raise RuntimeError(
-            "BrandForge needs 'requests' and 'beautifulsoup4'. "
+            "BrandGuide needs 'requests' and 'beautifulsoup4'. "
             "Install: pip install requests beautifulsoup4"
         ) from exc
 
