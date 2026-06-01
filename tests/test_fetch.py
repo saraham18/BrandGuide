@@ -12,6 +12,10 @@ PAGE = """<!doctype html><html><head>
 <style>.hero{color:#ff5500}.btn{background:#1133aa}body{font-family:'Poppins',sans-serif}</style>
 </head><body>
 <img src="/assets/logo.svg" alt="Acme logo">
+<img src="/cdn/shop/products/widget.jpg" class="product-card" alt="The Widget">
+<img src="/img/insta-feed-1.jpg" class="instagram-feed" alt="social post">
+<a href="https://instagram.com/acme">Instagram</a>
+<a href="https://twitter.com/intent/tweet?url=x">Share</a>
 <h1>Bold things for bold people</h1>
 <p>We craft tools that punch above their weight.</p>
 </body></html>"""
@@ -33,3 +37,10 @@ def test_fetch_parses_brand_signals():
     assert r.logo_candidates[0].endswith("logo.svg")
     assert r.domain == "acme.com"
     assert "punch above" in r.text_sample
+    # content imagery is classified and the logo is excluded from it
+    assert any("widget.jpg" in u for u in r.product_images)
+    assert any("insta-feed-1.jpg" in u for u in r.social_images)
+    assert all("logo.svg" not in u for u in r.product_images + r.social_images)
+    # the brand's own social profile is captured; the share-intent link is not
+    assert r.social_links.get("instagram") == "https://instagram.com/acme"
+    assert "x" not in r.social_links

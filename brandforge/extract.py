@@ -55,6 +55,38 @@ def download_logo(
     return None
 
 
+def download_images(
+    urls: list[str], dest_dir: str, *, prefix: str = "img", limit: int = 6,
+    session: object | None = None,
+) -> list[str]:
+    """Download up to `limit` images. Returns the saved file paths."""
+    if not urls:
+        return []
+    try:
+        import requests
+    except ImportError as exc:  # pragma: no cover
+        raise RuntimeError("'requests' is required. Install: pip install requests") from exc
+    http = session or requests
+    os.makedirs(dest_dir, exist_ok=True)
+    saved: list[str] = []
+    for url in urls:
+        if len(saved) >= limit:
+            break
+        try:
+            resp = http.get(url, headers={"User-Agent": USER_AGENT}, timeout=12)
+            content = resp.content
+            if not content or len(content) < 1024:  # skip tiny/tracking pixels
+                continue
+            ext = _guess_ext(url, resp.headers.get("content-type", ""))
+            path = os.path.join(dest_dir, f"{prefix}-{len(saved) + 1}{ext}")
+            with open(path, "wb") as fh:
+                fh.write(content)
+            saved.append(path)
+        except Exception:
+            continue
+    return saved
+
+
 def palette_from_image(path: str, *, count: int = 5) -> list[str]:
     """Sample dominant colors from a raster logo. SVG/unsupported -> []."""
     if path is None or path.lower().endswith(".svg"):

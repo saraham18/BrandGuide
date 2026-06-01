@@ -8,6 +8,7 @@ voice_tone/voice_notes, casting_notes, and rules.
 from __future__ import annotations
 
 import json
+import unicodedata
 from typing import Any
 
 from .config import Config
@@ -17,9 +18,37 @@ from .scrape import ScrapeResult
 SYSTEM = (
     "You are a senior brand strategist who builds brand guides that drive AI ad "
     "creative. Given real signals scraped from a company's website, you infer a "
-    "sharp, specific, usable brand guide - never generic filler. You return "
-    "STRICT JSON only, no prose, no markdown fences."
+    "sharp, specific, usable brand guide - never generic filler. Never use emojis "
+    "or em dashes; use a regular hyphen instead. You return STRICT JSON only, no "
+    "prose, no markdown fences."
 )
+
+
+def _strip_decor(s: str) -> str:
+    """Remove emojis and replace em/en dashes with a hyphen (house style)."""
+    out = []
+    for c in s:
+        if c in "—–":  # em / en dash
+            out.append("-")
+            continue
+        o = ord(c)
+        if c == "️" or o >= 0x1F000 or (
+            o >= 0x2190 and unicodedata.category(c) in ("So", "Sk")
+        ):
+            continue  # drop emojis / pictographs
+        out.append(c)
+    return "".join(out)
+
+
+def sanitize(obj: Any) -> Any:
+    """Recursively strip emojis and em dashes from a guide structure."""
+    if isinstance(obj, str):
+        return _strip_decor(obj)
+    if isinstance(obj, list):
+        return [sanitize(x) for x in obj]
+    if isinstance(obj, dict):
+        return {k: sanitize(v) for k, v in obj.items()}
+    return obj
 
 # A standard brand-guide model: identity, audience/personas, messaging, visual, style.
 SCHEMA_HINT = """{
@@ -136,4 +165,5 @@ def synthesize(
         temperature=0.5,
     )
     guide = _parse_json_object(raw)
-    return _merge_detected(guide, scrape, logo_palette or [])
+    guide = _merge_detected(guide, scrape, logo_palette or [])
+    return sanitize(guide)

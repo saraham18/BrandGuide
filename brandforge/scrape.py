@@ -5,6 +5,7 @@ unit-tested directly. Network fetching and HTML parsing import requests/bs4 lazi
 """
 from __future__ import annotations
 
+import json
 import re
 from collections import Counter
 from dataclasses import dataclass, field
@@ -34,6 +35,10 @@ class ScrapeResult:
     logo_candidates: list[str] = field(default_factory=list)
     colors: list[str] = field(default_factory=list)
     fonts: list[str] = field(default_factory=list)
+    product_images: list[str] = field(default_factory=list)
+    lifestyle_images: list[str] = field(default_factory=list)
+    social_images: list[str] = field(default_factory=list)
+    social_links: dict = field(default_factory=dict)
 
     @property
     def domain(self) -> str:
@@ -114,6 +119,74 @@ def rank_logo_candidates(candidates: list[str]) -> list[str]:
     return ordered
 
 
+# Image classification by surrounding context (alt/class/id/url).
+IMG_SKIP = (
+    "logo", "favicon", "icon", "sprite", "badge", "avatar", "pixel", "spacer",
+    "1x1", "placeholder", "loading", "data:image", ".svg",
+)
+PRODUCT_KW = (
+    "product", "/products/", "/shop", "shop-", "/cdn/shop/products", "item",
+    "bottle", "pack", "/sku", "pdp", "/collection", "swatch",
+)
+SOCIAL_KW = ("instagram", "insta-", "tiktok", "ugc", "social", "/feed", "user-generated")
+LIFESTYLE_KW = (
+    "hero", "lifestyle", "banner", "editorial", "story", "about", "model",
+    "people", "feature", "campaign", "lookbook",
+)
+
+SOCIAL_DOMAINS = {
+    "instagram.com": "instagram", "tiktok.com": "tiktok", "twitter.com": "x",
+    "x.com": "x", "facebook.com": "facebook", "youtube.com": "youtube",
+    "pinterest.com": "pinterest", "linkedin.com": "linkedin",
+}
+
+
+def classify_image(context: str) -> str | None:
+    """Bucket an image as product / social / lifestyle from its context, or skip."""
+    h = context.lower()
+    if any(k in h for k in IMG_SKIP):
+        return None
+    if any(k in h for k in SOCIAL_KW):
+        return "social"
+    if any(k in h for k in PRODUCT_KW):
+        return "product"
+    if any(k in h for k in LIFESTYLE_KW):
+        return "lifestyle"
+    return None
+
+
+def best_img_src(img, base: str) -> str:
+    """Resolve the largest available image URL from src/data-src/srcset."""
+    best, best_w = None, -1
+    srcset = img.get("srcset") or img.get("data-srcset") or ""
+    for part in srcset.split(","):
+        bits = part.strip().split()
+        if not bits:
+            continue
+        w = 0
+        if len(bits) > 1 and bits[1].endswith("w"):
+            try:
+                w = int(bits[1][:-1])
+            except ValueError:
+                w = 0
+        if w >= best_w:
+            best_w, best = w, bits[0]
+    src = best or img.get("src") or img.get("data-src") or ""
+    return urljoin(base, src) if src else ""
+
+
+def _social_links(soup) -> dict:
+    links: dict = {}
+    for a in soup.find_all("a", href=True):
+        low = a["href"].lower()
+        if any(s in low for s in ("sharer", "intent/", "/share?", "share-offsite")):
+            continue  # share buttons, not the brand's own profile
+        for domain, name in SOCIAL_DOMAINS.items():
+            if domain in low and name not in links:
+                links[name] = a["href"]
+    return links
+
+
 def fetch(url: str, *, timeout: int = 15, session: object | None = None) -> ScrapeResult:
     """Fetch and parse a page into a ScrapeResult."""
     if not url.startswith(("http://", "https://")):
@@ -170,6 +243,56 @@ def fetch(url: str, *, timeout: int = 15, session: object | None = None) -> Scra
         if "logo" in hay and img.get("src"):
             candidates.append(urljoin(final_url, img["src"]))
     result.logo_candidates = rank_logo_candidates(candidates)
+
+    # Content imagery: product photos, lifestyle photos, social reference photos.
+    buckets = {"product": [], "lifestyle": [], "social": []}
+
+    def _add(cat: str, u: str) -> None:
+        if u and u not in buckets[cat] and u not in result.logo_candidates:
+            buckets[cat].append(u)
+
+    # JSON-LD Product images are the most reliable product photos.
+    for sc in soup.find_all("script", attrs={"type": "application/ld+json"}):
+        try:
+            data = json.loads(sc.get_text() or "{}")
+        except Exception:
+            continue
+        objs = data if isinstance(data, list) else [data]
+        for obj in objs:
+            if not isinstance(obj, dict):
+                continue
+            nodes = obj.get("@graph", [obj]) if isinstance(obj.get("@graph"), list) else [obj]
+            for node in nodes:
+                if not isinstance(node, dict):
+                    continue
+                t = node.get("@type", "")
+                t = " ".join(t) if isinstance(t, list) else str(t)
+                if "Product" not in t:
+                    continue
+                imgs = node.get("image")
+                for im in (imgs if isinstance(imgs, list) else [imgs]):
+                    if isinstance(im, str):
+                        _add("product", urljoin(final_url, im))
+                    elif isinstance(im, dict) and im.get("url"):
+                        _add("product", urljoin(final_url, im["url"]))
+
+    # Classify <img> tags by their surrounding context.
+    for img in soup.find_all("img"):
+        hay = " ".join(
+            str(img.get(a, "")) for a in ("src", "data-src", "srcset", "alt", "class", "id")
+        )
+        cat = classify_image(hay)
+        if cat:
+            _add(cat, best_img_src(img, final_url))
+
+    # og:image is a representative brand/lifestyle image.
+    if result.og_image:
+        _add("lifestyle", urljoin(final_url, result.og_image))
+
+    result.product_images = buckets["product"][:8]
+    result.lifestyle_images = buckets["lifestyle"][:5]
+    result.social_images = buckets["social"][:6]
+    result.social_links = _social_links(soup)
 
     # Colors + fonts from inline styles and linked stylesheets (bounded).
     css_text = " ".join(s.get_text() for s in soup.find_all("style"))

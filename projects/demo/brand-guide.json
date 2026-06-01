@@ -1,78 +1,127 @@
 {
-  "brand_name": "Stripe",
-  "tagline": "Financial infrastructure to grow your revenue.",
-  "mission": "To increase the GDP of the internet by building the most powerful and flexible financial infrastructure for businesses of every size, from first transaction to billionth.",
-  "summary": "Stripe is the backbone of global commerce \u2014 a developer-first, enterprise-grade payments and financial platform that lets businesses accept payments, build billing models, issue cards, move money globally, and embed financial services into any product. It combines technical depth with elegant simplicity, trusted by startups and 50% of Fortune 100 companies alike.",
-  "target_audience": "Founders, CTOs, product managers, and finance leaders at high-growth startups, scaling SaaS companies, marketplaces, and enterprise organizations who need reliable, programmable financial infrastructure without operational friction.",
+  "brand_name": "Death Wish Coffee",
+  "tagline": "The Society of Strong Coffee",
+  "mission": "To deliver the boldest, smoothest, highest-caffeine coffee on earth using USDA Organic and Fair Trade Certified beans, sourced sustainably and roasted to uncompromising standards for people who refuse to settle for ordinary.",
+  "summary": "Death Wish Coffee is a dark, mythology-charged coffee brand built for high-performers, rebels, and caffeine maximalists. Founded in 2012, it blends premium arabica and robusta beans from India, Peru, and Central and South America into a product that is simultaneously intense and smooth. The brand extends into lifestyle merchandise, limited-edition collectibles, and a subscriber community that rewards loyalty with exclusive access. Every touchpoint - from product names like Power Surge and Gates of Valhalla to copy like 'harness your inner storm' - signals that this is coffee as identity, not just caffeine.",
+  "target_audience": "Adults 22-45 who identify as hard workers, night owls, gym-goers, gamers, outdoor adventurers, or counterculture enthusiasts. They distrust corporate polish, respect craft and intensity, and want a brand that matches their energy. They respond to mythology, dark aesthetics, and community belonging.",
   "personas": [
     {
-      "name": "The Ambitious Founder",
-      "description": "A 28-35 year old tech entrepreneur launching or scaling a SaaS or marketplace product, obsessed with shipping fast and not getting bogged down by payment complexity. They want infrastructure that just works so they can focus on growth."
+      "name": "The Relentless Grinder",
+      "description": "A 28-35 year old who stacks early mornings and late nights without apology - trades, construction, freelance hustle, or gym before sunrise. Coffee is fuel and ritual, and anything less than maximum strength is a waste of time."
     },
     {
-      "name": "The Enterprise Architect",
-      "description": "A senior engineering or product leader at a Fortune 500 company, mid-40s, tasked with modernizing legacy payment systems. They need proven reliability, global scale, and a platform that integrates cleanly into complex existing stacks."
+      "name": "The Dark Aesthetic Collector",
+      "description": "A 24-38 year old who gravitates toward Norse mythology, occult imagery, and limited-edition drops. They buy the Baba Yaga mug because it belongs on their shelf and in their story, not just in their kitchen."
     },
     {
-      "name": "The Global Commerce Operator",
-      "description": "A 30-40 year old head of payments or revenue operations at a fast-scaling e-commerce or platform business, managing multi-currency transactions and international expansion. They care about conversion rates, uptime, and borderless money movement."
+      "name": "The Loyal Subscriber",
+      "description": "A 30-45 year old who found Death Wish years ago and never looked back. They evangelize the brand to friends, leave detailed reviews, and feel genuine pride in being part of a coffee society that others have not discovered yet."
     },
     {
-      "name": "The Developer Builder",
-      "description": "A 22-32 year old full-stack engineer who is the internal champion for Stripe adoption, energized by clean APIs and excellent documentation. They evaluate tools by how quickly they can ship a proof of concept and how far the platform can scale."
+      "name": "The High-Caffeine Convert",
+      "description": "A 22-32 year old who was drinking mediocre coffee until one bag of Death Wish rewired their expectations entirely. They are early in their brand relationship but already evangelical, driven by the shock of discovering something genuinely different."
     }
   ],
   "selling_points": [
-    "135+ currencies and payment methods supported globally",
-    "$1.9 trillion in payments volume processed in 2025",
-    "99.999% historical uptime \u2014 enterprise-grade reliability",
-    "200M+ active subscriptions managed on Stripe Billing",
-    "Flexible billing models: subscriptions, usage-based, one-time, and custom",
-    "Embedded payments for platforms and marketplaces",
-    "Card issuing program creation built into the platform",
-    "Stablecoin and crypto-enabled borderless money movement",
-    "Agentic commerce monetization for AI-driven business models",
-    "Trusted by 50% of Fortune 100 companies",
-    "Unified online and in-person payment infrastructure",
-    "Personalized product recommendations based on business type"
+    "World's strongest coffee with naturally high caffeine from a robusta and arabica blend",
+    "USDA Organic and Fair Trade Certified on every roast",
+    "Bold flavor with no overwhelming bitterness - smooth finish confirmed by repeat buyers",
+    "Subscribe and save 30% off the first shipment plus access to exclusive society merch",
+    "Build-your-own bundle saves up to 15% off",
+    "15% discount for military, first responders, and teachers via GovX ID",
+    "Limited-edition drops tied to mythology and dark folklore themes create urgency and collectibility",
+    "Available in whole bean, ground, and single-serve pods for all brew methods",
+    "Consistent quality and taste across every bag - no batch-to-batch surprises",
+    "Lifestyle merchandise line extends the brand into daily identity expression"
   ],
   "emotional_motivations": [
-    "Confidence that payments will never be the reason growth stalls",
-    "Pride in building on infrastructure trusted by the world's best companies",
-    "Relief from the complexity and anxiety of managing global money movement",
-    "Ambition to scale without limits \u2014 from first transaction to billionth",
-    "Control over revenue models without engineering constraints",
-    "Trust in a platform with proven, measurable reliability"
+    "Desire to feel powerful and in control during high-pressure moments",
+    "Pride in belonging to a community of people who demand more than average",
+    "The thrill of discovering something extreme that actually delivers on its promise",
+    "Identity expression through dark, mythological, counterculture aesthetics",
+    "Loyalty to a brand that respects its customers with real discounts and exclusive access",
+    "The ritual comfort of a consistent, trusted product that never disappoints"
   ],
-  "primary_color": "#533afd",
-  "secondary_color": "#1a1a2e",
-  "accent_color": "#f5a623",
+  "primary_color": "#e12727",
+  "secondary_color": "#ac6e39",
+  "accent_color": "#ecd798",
   "color_palette": [
-    "#fb76fa",
-    "#7ec8e3",
-    "#2d2d44"
+    "#fb8077",
+    "#079ada",
+    "#9ca3af",
+    "#181313",
+    "#5c5a5a",
+    "#501919",
+    "#9e9e9e",
+    "#867474"
   ],
-  "font_heading": "sohne-var",
-  "font_body": "SourceCodePro",
-  "voice_tone": "Precise, confident, and quietly ambitious.",
-  "voice_notes": "Write with technical authority but never jargon for jargon's sake. Lead with scale and capability, then ground it in concrete numbers and real outcomes. Sentences should be tight and declarative \u2014 no fluff, no hype. Use active voice. Speak to builders and decision-makers as peers. Avoid superlatives unless backed by data. The tone is calm confidence: Stripe doesn't need to shout because the numbers speak. When writing CTAs, be direct and action-oriented ('Start building', 'See the docs', 'Talk to sales').",
-  "casting_notes": "Cast real-looking founders, engineers, and operators aged 25-45 \u2014 diverse in background, sharp in energy, working in real environments: modern open offices, home setups with multiple monitors, co-working spaces, or retail floors. Avoid overly polished or stock-photo aesthetics. Subjects should look like they're actually building something, not posing. Wardrobe: smart-casual, functional. Energy: focused, purposeful, quietly excited \u2014 not loud or salesy. For enterprise spots, include team settings and boardroom-adjacent contexts that signal scale without feeling stiff.",
-  "rules": "DO: Use real metrics and proof points in copy whenever possible. DO: Reflect the full spectrum of business sizes \u2014 from solo founders to Fortune 100. DO: Pair technical capability with business outcome language. DO: Use the deep indigo (#533afd) as the dominant brand signal in visuals. DO: Show the product (dashboard, API, checkout) in context \u2014 not as abstract UI. DO: Maintain visual cleanliness \u2014 generous whitespace, structured layouts. DON'T: Use generic 'payments made easy' language \u2014 Stripe is infrastructure, not a widget. DON'T: Overpromise or use unsubstantiated superlatives. DON'T: Show chaotic, cluttered, or low-fidelity creative \u2014 quality signals trust. DON'T: Use humor that undermines credibility \u2014 wit is fine, slapstick is not. DON'T: Ignore developer and technical audiences in favor of pure business messaging. DON'T: Use competitor names or comparative claims. DON'T: Depict payment failure, fraud, or downtime scenarios \u2014 reinforce reliability always.",
+  "font_heading": "DM Sans",
+  "font_body": "DM Sans",
+  "voice_tone": "Dark, bold, and mythic with a streak of earned confidence",
+  "voice_notes": "Write like someone who has been through something and come out stronger. Use short, punchy declarative sentences alongside occasional epic, world-building phrases. Reference storms, endurance, power, and folklore without being campy. Never use corporate softness or hedging language. Avoid words like 'journey,' 'solution,' or 'innovative.' Superlatives are earned here - use them when the product backs them up. Reviews and community voices should feel raw and real, not polished. Discount and offer copy should feel like a reward, not a sale.",
+  "casting_notes": "Cast real-looking humans aged 24-42 with visible personality and physical presence - calloused hands, tattoos, worn flannel, gym chalk, or dark streetwear all work. Avoid model-perfect faces and sterile environments. Settings should feel lived-in: dim kitchens at 5am, cluttered workshops, foggy morning trails, moody apartments with bookshelves. Energy should be calm intensity rather than hyperactive. Women and men equally, with strong representation of military, trades, and athletic lifestyles. Avoid anyone who looks like they belong in a generic lifestyle stock photo.",
+  "rules": "DO use dark backgrounds, deep reds, and warm amber tones to anchor visuals. DO lean into mythology, folklore, and elemental metaphors. DO let customer voices be raw and unpolished in testimonial creative. DO create urgency around limited-edition drops with specific product names. DO reward the audience - they hate being talked down to. DO NOT use bright, airy, or pastel aesthetics that conflict with the brand's dark identity. DO NOT use generic coffee tropes like steam rising over a sunrise or a smiling barista. DO NOT soften the intensity of the product - the strength is the point. DO NOT use emoji or exclamation-point-heavy copy that reads as hype without substance. DO NOT misrepresent certifications - always pair organic and fair trade claims with factual grounding. DO NOT ignore the merchandise line - it is a core part of the brand identity, not an afterthought.",
   "_detected": {
     "colors": [
-      "#533afd",
-      "#f5a623",
-      "#fb76fa",
-      "#1a1a2e",
-      "#7ec8e3",
-      "#2d2d44"
+      "#ac6e39",
+      "#9ca3af",
+      "#fb8077",
+      "#e12727",
+      "#ecd798",
+      "#079ada"
     ],
-    "logo_colors": [],
+    "logo_colors": [
+      "#181313",
+      "#5c5a5a",
+      "#501919",
+      "#9e9e9e",
+      "#867474"
+    ],
     "fonts": [
-      "sohne-var",
-      "SourceCodePro"
+      "DM Sans",
+      "var(--font-body-family)",
+      "ui-sans-serif",
+      "ui-monospace"
     ],
-    "source_url": "https://stripe.com/"
+    "source_url": "https://www.deathwishcoffee.com/"
   },
-  "logo_path": "logo.svg"
+  "logo_path": "logo.png",
+  "assets": [
+    {
+      "kind": "product_photo",
+      "label": "Product photo",
+      "file_path": "assets/product_photo-1.jpg"
+    },
+    {
+      "kind": "product_photo",
+      "label": "Product photo",
+      "file_path": "assets/product_photo-2.jpg"
+    },
+    {
+      "kind": "product_photo",
+      "label": "Product photo",
+      "file_path": "assets/product_photo-3.jpg"
+    },
+    {
+      "kind": "product_photo",
+      "label": "Product photo",
+      "file_path": "assets/product_photo-4.jpg"
+    },
+    {
+      "kind": "product_photo",
+      "label": "Product photo",
+      "file_path": "assets/product_photo-5.jpg"
+    },
+    {
+      "kind": "product_photo",
+      "label": "Product photo",
+      "file_path": "assets/product_photo-6.jpg"
+    }
+  ],
+  "social_links": {
+    "x": "https://twitter.com/deathwishcoffee",
+    "facebook": "https://www.facebook.com/deathwishcoffee",
+    "instagram": "https://www.instagram.com/deathwishcoffee/",
+    "youtube": "https://www.youtube.com/channel/UC1uurJMded2rRJioe8yka7g"
+  }
 }

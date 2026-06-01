@@ -2,6 +2,7 @@ from brandforge.scrape import (
     extract_colors,
     extract_fonts,
     rank_logo_candidates,
+    classify_image,
     _norm_hex,
     _is_greyish,
 )
@@ -41,3 +42,11 @@ def test_rank_logo_candidates_prefers_logo_assets():
     ranked = rank_logo_candidates(cands)
     assert "logo.svg" in ranked[0]
     assert ranked[-1].endswith("favicon.ico")
+
+
+def test_classify_image_buckets_and_skips():
+    assert classify_image("/cdn/shop/products/tee.jpg product-card") == "product"
+    assert classify_image("instagram feed ugc photo") == "social"
+    assert classify_image("homepage hero banner") == "lifestyle"
+    assert classify_image("site-logo.svg") is None      # logos/icons skipped
+    assert classify_image("random decorative blob") is None  # no signal -> skip

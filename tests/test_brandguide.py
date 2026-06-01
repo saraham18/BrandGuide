@@ -3,8 +3,14 @@ import types
 
 from brandforge.config import Config
 from brandforge.scrape import ScrapeResult
-from brandforge.brandguide import synthesize, _merge_detected, build_prompt
+from brandforge.brandguide import synthesize, sanitize, _merge_detected, build_prompt
 from brandforge.render import render_html
+
+
+def test_sanitize_strips_emojis_and_em_dashes():
+    out = sanitize({"voice_tone": "Bold \U0001f525 - punchy — fast", "list": ["a — b"]})
+    assert out["voice_tone"] == "Bold  - punchy - fast"
+    assert out["list"] == ["a - b"]
 
 
 class FakeBlock:
@@ -70,8 +76,17 @@ def test_render_html_is_self_contained_and_has_sections():
         "voice_tone": "punchy", "casting_notes": "young", "rules": "no fluff",
         "_detected": {"source_url": "https://acme.com"},
     }
+    guide["assets"] = [
+        {"kind": "product_photo", "label": "Product photo", "file_path": "assets/product_photo-1.jpg"},
+        {"kind": "social_reference", "label": "Social reference", "file_path": "assets/social_reference-1.jpg"},
+    ]
+    guide["social_links"] = {"instagram": "https://instagram.com/acme"}
     out = render_html(guide, logo_rel="logo.png")
     assert out.startswith("<!doctype html>")
-    for section in ("Mission", "Audience", "Messaging", "Visual Elements", "Style"):
+    for section in ("Mission", "Audience", "Messaging", "Visual Elements", "Style", "Social"):
         assert section in out
     assert "#ff5500" in out and "logo.png" in out
+    # galleries and social links render
+    assert "assets/product_photo-1.jpg" in out
+    assert "Social Reference Photos" in out
+    assert "https://instagram.com/acme" in out

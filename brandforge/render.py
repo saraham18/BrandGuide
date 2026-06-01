@@ -61,8 +61,29 @@ def _colors(g: dict) -> str:
     return f'<div class="swatches">{"".join(cells)}</div>' if cells else '<p class="muted">-</p>'
 
 
+def _gallery(assets: list, kind: str) -> str:
+    imgs = [a for a in (assets or []) if a.get("kind") == kind and a.get("file_path")]
+    if not imgs:
+        return '<p class="muted">None found on the site.</p>'
+    cells = "".join(
+        f'<img class="thumb" src="{_esc(a["file_path"])}" alt="{_esc(a.get("label"))}">'
+        for a in imgs
+    )
+    return f'<div class="gallery">{cells}</div>'
+
+
+def _social(links: dict) -> str:
+    if not links:
+        return '<p class="muted">-</p>'
+    return " ".join(
+        f'<a class="pill" href="{_esc(u)}">{_esc(name)}</a>' for name, u in links.items()
+    )
+
+
 def render_html(guide: dict, *, logo_rel: str | None = None) -> str:
     g = guide
+    assets = g.get("assets") or []
+    social_links = g.get("social_links") or {}
     logo_img = (
         f'<img class="logo" src="{_esc(logo_rel)}" alt="logo">' if logo_rel else ""
     )
@@ -105,6 +126,13 @@ def render_html(guide: dict, *, logo_rel: str | None = None) -> str:
   .sw-role {{ font-weight:600; }}
   .do {{ color:#137a3f; }} .dont {{ color:#b42318; }}
   .mono {{ font-family:ui-monospace,Menlo,monospace; }}
+  .gallery {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+             gap:12px; }}
+  .thumb {{ width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:10px;
+           border:1px solid var(--line); background:#fff; }}
+  .pill {{ display:inline-block; background:#eef1f6; color:var(--ink); text-decoration:none;
+          border-radius:999px; padding:4px 14px; font-size:13px; margin:0 6px 6px 0;
+          text-transform:capitalize; }}
   footer {{ margin-top:52px; color:var(--muted); font-size:13px; border-top:1px solid var(--line);
            padding-top:18px; }}
   @media (max-width:640px) {{ .two,.grid {{ grid-template-columns:1fr; }} }}
@@ -137,6 +165,13 @@ def render_html(guide: dict, *, logo_rel: str | None = None) -> str:
     <h3 style="margin-top:22px">Typography</h3>
     <p><strong>Heading:</strong> <span class="mono">{_esc(g.get('font_heading'))}</span></p>
     <p><strong>Body:</strong> <span class="mono">{_esc(g.get('font_body'))}</span></p>
+    <h3 style="margin-top:22px">Product Photos</h3>{_gallery(assets, 'product_photo')}
+    <h3 style="margin-top:22px">Lifestyle Photos</h3>{_gallery(assets, 'lifestyle_photo')}
+  </div>
+
+  <div class="section"><p class="label">Social</p>
+    <h3>Profiles</h3><p>{_social(social_links)}</p>
+    <h3 style="margin-top:14px">Social Reference Photos</h3>{_gallery(assets, 'social_reference')}
   </div>
 
   <div class="section"><p class="label">Style</p>

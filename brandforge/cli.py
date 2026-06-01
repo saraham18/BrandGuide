@@ -9,7 +9,7 @@ import sys
 
 from .config import Config, MissingCredential
 from .brandguide import synthesize
-from .extract import download_logo, palette_from_image
+from .extract import download_images, download_logo, palette_from_image
 from .render import render_html
 from .scrape import fetch
 
@@ -39,9 +39,30 @@ def cmd_generate(args, config: Config) -> int:
     logo_palette = palette_from_image(logo_path) if logo_path else []
     print(f"  logo: {logo_rel or 'not found'}; logo colors: {', '.join(logo_palette) or '-'}")
 
+    # Download product / lifestyle / social reference photos into assets/.
+    assets_dir = os.path.join(out_dir, "assets")
+    assets: list[dict] = []
+    for kind, urls, label in (
+        ("product_photo", scrape.product_images, "Product photo"),
+        ("lifestyle_photo", scrape.lifestyle_images, "Lifestyle photo"),
+        ("social_reference", scrape.social_images, "Social reference"),
+    ):
+        for path in download_images(urls, assets_dir, prefix=kind):
+            assets.append({
+                "kind": kind,
+                "label": label,
+                "file_path": os.path.join("assets", os.path.basename(path)),
+            })
+    n = lambda k: sum(1 for a in assets if a["kind"] == k)
+    print(f"  photos: {n('product_photo')} product, {n('lifestyle_photo')} lifestyle, "
+          f"{n('social_reference')} social")
+    print(f"  social links: {', '.join(scrape.social_links) or 'none'}")
+
     print("-> Synthesizing brand guide with Claude ...")
     guide = synthesize(config, scrape, logo_palette=logo_palette)
     guide["logo_path"] = logo_rel  # downloaded brand logo
+    guide["assets"] = assets
+    guide["social_links"] = scrape.social_links
 
     json_path = os.path.join(out_dir, "brand-guide.json")
     html_path = os.path.join(out_dir, "brand-guide.html")
